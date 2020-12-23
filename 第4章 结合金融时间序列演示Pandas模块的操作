@@ -1,0 +1,32 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pylab as plt #作图模块
+from pylab import mpl
+plt.rcParams['font.sans-serif']=['fangsong_GB2312'] #中文采用“仿宋_GB2312”字体
+import numpy.random as npr
+
+
+nano=pd.read_excel('/users/kerry/nan.xls',sheet_name="nan",header=0,index_col=0)
+cont=pd.read_excel('/users/kerry/CONTACT.xls',sheet_name="CONTACT",header=0,index_col=0)
+merge=pd.merge(left=nano,right=cont,left_index=True,right_index=True)
+hs300=pd.read_excel('/users/kerry/HS300.xls',sheet_name="000300.SH",header=0,index_col=0)
+
+
+hs300.plot(kind='line',subplots=True,sharex=True,sharey=True,layout=(2,2),figsize=(10,8),title=u'2015～2020 沪深300指数走势图',grid=True,fontsize=13)
+merge.plot(kind='line',subplots=True,sharex=True)
+
+
+ma20=hs300['收盘价()'].rolling(window=20).mean()
+ma20=ma20.to_frame()
+ma20=ma20.rename(columns={'收盘价()':'20日均线'})
+
+
+ma50=hs300['收盘价()'].rolling(window=50).mean()
+ma50=ma50.to_frame()
+ma50=ma50.rename(columns={'收盘价()':'50日均线'})
+
+
+hs300_close=hs300['收盘价()'].to_frame()
+#hs300_close=hs300_close.rename(columns={'Close()':'收盘价'})
+hs300_new1=pd.concat([hs300_close,ma20,ma50],axis=1)
+hs300_new1.plot(figsize=(45,17.5),grid=True,fontsize=26,linewidth=2)
