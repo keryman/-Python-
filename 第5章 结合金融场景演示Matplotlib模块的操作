@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pylab as plt #作图模块
 from pylab import mpl
-plt.rcParams['font.sans-serif']=['fangsong_GB2312']
+plt.rcParams['font.sans-serif']=['fangsong_GB2312'] #中文采用“仿宋_GB2312”字体
 import numpy.random as npr
 
 
@@ -12,10 +12,10 @@ x_logn=npr.lognormal(mean=0.5,sigma=1.0,size=I)
 x_chi=npr.chisquare(df=4,size=I)
 x_beta=npr.beta(a=2,b=4,size=I)
 
-plt.figure(figsize=(12,10))
+plt.figure(figsize=(12,10)) #总图尺寸
 
 plt.subplot(2,2,1)
-plt.hist(x_norm,label=u'正态分布抽样',bins=20,facecolor='y',edgecolor='k')
+plt.hist(x_norm,label=u'正态分布的抽样',bins=20,facecolor='y',edgecolor='k')
 plt.xticks(fontsize=13)
 plt.xlabel(u'样本值',fontsize=13)
 plt.yticks(fontsize=13)
