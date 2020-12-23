@@ -1,3 +1,36 @@
+
+#5.2 曲线图#
+import pandas as pd
+import numpy as np
+import matplotlib.pylab as plt #作图模块
+from pylab import mpl
+plt.rcParams['font.sans-serif']=['fangsong_GB2312']
+import numpy.random as npr
+
+
+beta=np.linspace(0.5,2,100)
+Rf=0.03
+Rm=0.12
+Ri=Rf+beta*(Rm-Rf)
+plt.figure(figsize=(9,6))
+plt.plot(beta,Ri,'r-',label='证券市场线',lw=2)
+plt.plot(1.0,Rf+1.0*(Rm-Rf),'o',lw=2.5)
+plt.axis('tight')
+plt.xticks(fontsize=14)
+plt.xlabel(u'beta值',fontsize=14)
+plt.xlim(0.4,2.1)
+plt.yticks(fontsize=14)
+plt.ylabel(u'单一股票收益率',fontsize=14)
+plt.ylim(0.04,0.22)
+plt.title(u'资本资产定价模型',fontsize=14)
+plt.annotate(u'贝塔等于1的收益',fontsize=14,xy=(1.0,0.12),xytext=(0.8,0.15),arrowprops=dict(facecolor='b',shrink=0.05))
+plt.legend(loc=0,fontsize=14)
+plt.grid()
+
+#5.3 直方图#
+
+#5.3.1 单样本直方图#
+
 import pandas as pd
 import numpy as np
 import matplotlib.pylab as plt #作图模块
@@ -50,6 +83,7 @@ plt.ylabel(u'频数',fontsize=13,rotation=90)
 plt.legend(loc=0,fontsize=13)
 plt.grid(True)
 
+#5.3.2 多样本直方图
 
 I=1000
 sub=npr.normal(loc=0.8,scale=1.5,size=(I,2))
