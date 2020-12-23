@@ -49,3 +49,14 @@ plt.yticks(fontsize=13)
 plt.ylabel(u'频数',fontsize=13,rotation=90)
 plt.legend(loc=0,fontsize=13)
 plt.grid(True)
+
+
+I=1000
+sub=npr.normal(loc=0.8,scale=1.5,size=(I,2))
+plt.figure(figsize=(8,5))
+plt.hist(sub,label=[u'正态分布的抽样数组1',u'正态分布的抽样数组2'],stacked=True,edgecolor='k',bins=30)
+plt.xlabel(u'样本值',fontsize=13)
+plt.yticks(fontsize=13)
+plt.ylabel(u'频数',fontsize=13,rotation=90)
+plt.legend(loc=0,fontsize=13)
+plt.grid(True)
