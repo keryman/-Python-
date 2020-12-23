@@ -1,0 +1,51 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pylab as plt #作图模块
+from pylab import mpl
+plt.rcParams['font.sans-serif']=['fangsong_GB2312']
+import numpy.random as npr
+
+
+I=1000
+x_norm=npr.normal(loc=0.8,scale=1.5,size=(I,2)
+x_logn=npr.lognormal(mean=0.5,sigma=1.0,size=I)
+x_chi=npr.chisquare(df=4,size=I)
+x_beta=npr.beta(a=2,b=4,size=I)
+
+plt.figure(figsize=(12,10))
+
+plt.subplot(2,2,1)
+plt.hist(x_norm,label=u'正态分布抽样',bins=20,facecolor='y',edgecolor='k')
+plt.xticks(fontsize=13)
+plt.xlabel(u'样本值',fontsize=13)
+plt.yticks(fontsize=13)
+plt.ylabel(u'频数',fontsize=13,rotation=90)
+plt.legend(loc=0,fontsize=13)
+plt.grid(True)
+
+plt.subplot(2,2,2)
+plt.hist(x_logn,label=u'对数正态分布的抽样',bins=20,facecolor='r',edgecolor='k')
+plt.xticks(fontsize=13)
+plt.xlabel(u'样本值',fontsize=13)
+plt.yticks(fontsize=13)
+plt.ylabel(u'频数',fontsize=13,rotation=90)
+plt.legend(loc=0,fontsize=13)
+plt.grid(True)
+
+plt.subplot(2,2,3)
+plt.hist(x_chi,label=u'卡方分布的抽样',bins=20,facecolor='b',edgecolor='k')
+plt.xticks(fontsize=13)
+plt.xlabel(u'样本值',fontsize=13)
+plt.yticks(fontsize=13)
+plt.ylabel(u'频数',fontsize=13,rotation=90)
+plt.legend(loc=0,fontsize=13)
+plt.grid(True)
+
+plt.subplot(2,2,4)
+plt.hist(x_chi,label=u'贝塔分布的抽样',bins=20,facecolor='c',edgecolor='k')
+plt.xticks(fontsize=13)
+plt.xlabel(u'样本值',fontsize=13)
+plt.yticks(fontsize=13)
+plt.ylabel(u'频数',fontsize=13,rotation=90)
+plt.legend(loc=0,fontsize=13)
+plt.grid(True)
